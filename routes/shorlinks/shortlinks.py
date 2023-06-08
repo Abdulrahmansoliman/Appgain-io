@@ -60,7 +60,7 @@ def update_shortlink(slug):
 
     data = request.get_json()
 
-    # Update only the sent attributes
+    # Only update sent attributes, leave others as is
     if 'ios' in data:
         shortlink.ios = data['ios']
     if 'android' in data:
