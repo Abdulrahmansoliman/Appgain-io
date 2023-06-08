@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from 'react';
+// src/components/Shortlinks.js
 
-const Shortlinks = () => {
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+function Shortlinks() {
   const [shortlinks, setShortlinks] = useState([]);
 
   useEffect(() => {
@@ -9,9 +12,8 @@ const Shortlinks = () => {
 
   const fetchShortlinks = async () => {
     try {
-      const response = await fetch('/api/shortlinks');
-      const data = await response.json();
-      setShortlinks(data);
+      const response = await axios.get('/api/shortlinks');
+      setShortlinks(response.data);
     } catch (error) {
       console.error('Error fetching shortlinks:', error);
     }
@@ -26,11 +28,12 @@ const Shortlinks = () => {
           <p>iOS Fallback: {shortlink.ios?.fallback}</p>
           <p>Android Fallback: {shortlink.android?.fallback}</p>
           <p>Web Fallback: {shortlink.web?.fallback}</p>
+          <a href={`/update/${shortlink.id}`}>Edit</a>
           <hr />
         </div>
       ))}
     </div>
   );
-};
+}
 
 export default Shortlinks;
