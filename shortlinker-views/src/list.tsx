@@ -9,14 +9,14 @@ const styles = {
   padding: "20px",
   maxWidth: "400px",
   margin: "auto",
-  position: "relative"| undefined;
+  position: "relative"| undefined,
   overflow: "hidden",
   },
   title: {
     fontSize: "24px",
     fontWeight: "bold",
     marginBottom: "20px",
-    textAlign: "center"| undefined;
+    textAlign: "center"| undefined,
     color: "#333",
   },
   label: {
