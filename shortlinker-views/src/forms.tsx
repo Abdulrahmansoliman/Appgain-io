@@ -236,12 +236,12 @@ export const PutForm = () => {
     },
     body: JSON.stringify(body)
   })
-  .then(response => {
+.then(async response => {
     if (response.status === 201) {
       console.log("Item updated successfully!");
       return response.json();
     } else {
-      setResponseError(response.statusText);
+      setResponseError((await response.json()).error);
     }
   })
   .then(data => {
