@@ -104,7 +104,7 @@ export const CardList = () => {
   //test
   const [shortenLink, setShortenLink] = useState<shortenLinkProps[]>([]);
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/shortlinks/", { method: "GET"})
+    fetch("https://shortlinker.onrender.com/shortlinks/", { method: "GET"})
       .then((response) => {
         console.log(response);
         return response.json();
