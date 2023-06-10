@@ -76,9 +76,9 @@ def update_shortlink(slug):
 
     # Only update sent attributes, leave others as is
     if 'ios' in data:
-        shortlink.ios = data['ios']
+        shortlink.ios.update(data['ios'])
     if 'android' in data:
-        shortlink.android = data['android']
+        shortlink.android.update(data['android'])
     if 'web' in data:
         shortlink.web = data['web']
 
