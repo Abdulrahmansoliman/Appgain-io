@@ -1,4 +1,4 @@
-pymongo==3.11.3
+pymongo
 mongoengine==0.23.1
 alembic==1.5.1
 bcrypt==3.2.0
