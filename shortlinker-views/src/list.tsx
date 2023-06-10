@@ -11,14 +11,14 @@ const styles = {
   margin: "auto",
   position: "relative",
   overflow: "hidden",
-  },
+  }as React.CSSProperties,
   title: {
     fontSize: "24px",
     fontWeight: "bold",
     marginBottom: "20px",
     textAlign: "center",
     color: "#333",
-  },
+  }as React.CSSProperties,
   label: {
     fontWeight: "bold",
     color: "#777",
