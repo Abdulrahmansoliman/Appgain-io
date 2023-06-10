@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { CardList, Card } from "./list";
+import { CardList} from "./list";
 
 type CardPros = {
   slug: string;
