@@ -371,11 +371,11 @@ export const PutForm = () => {
             <h3>Slug</h3>
             <p>{newLink.slug}</p> 
             <h3>Android</h3>
-            <p>{newLink.android.fallback}</p>   
-            <p>{newLink.android.primary}</p>   
+            <h4>Fallback: <p>{newLink.android.fallback}</p></h4>   
+            <h4>Primary: <p>{newLink.android.primary}</p> </h4>  
             <h3>IOS</h3>    
-            <p>{newLink.ios.fallback}</p>    
-            <p>{newLink.ios.primary}</p>    
+            <h3> Fallback: <p>{newLink.ios.fallback}</p></h3>    
+            <h3>Primary: <p>{newLink.ios.primary}</p></h3>    
           </div>
         )}
 
