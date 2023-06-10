@@ -9,14 +9,14 @@ const styles = {
   padding: "20px",
   maxWidth: "400px",
   margin: "auto",
-  position: "relative"as string & {}, // change type to string & 
+  position: "relative",
   overflow: "hidden",
   },
   title: {
     fontSize: "24px",
     fontWeight: "bold",
     marginBottom: "20px",
-    textAlign: "center" as string & {}, // change type to string &
+    textAlign: "center",
     color: "#333",
   },
   label: {
@@ -95,6 +95,7 @@ type shortenLinkProps = {
 };
 
 export const CardList = () => {
+  //test
   const [shortenLink, setShortenLink] = useState<shortenLinkProps[]>([]);
   useEffect(() => {
     fetch("http://127.0.0.1:5000/shortlinks/", { method: "GET"})
