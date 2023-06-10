@@ -50,7 +50,7 @@ interface CardProps {
   web: string;
 }
 
-const Card: React.FC<CardProps> = ({ slug, android, ios, web }) => {
+export const Card: React.FC<CardProps> = ({ slug, android, ios, web }) => {
   return (
     <div style={styles.card}>
       <p style={styles.title}>{slug}</p>
