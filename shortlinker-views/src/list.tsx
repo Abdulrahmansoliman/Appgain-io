@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 const styles = {
   card: {
@@ -33,8 +32,8 @@ const styles = {
   },
   link: {
     textDecoration: "none",
-    color: "#333",
     cursor: "pointer",
+    color: "#88cff0"
   },
 };
 interface CardProps {
@@ -56,19 +55,26 @@ export const Card: React.FC<CardProps> = ({ slug, android, ios, web }) => {
       <p style={styles.title}>{slug}</p>
       <div style={styles.row}>
         <span style={styles.label}>Android Primary:</span>
-        <span style={styles.value}>{android.primary}</span>
-      </div>
+        <a href={android.primary} style={styles.link}>
+              {android.primary}
+          </a>      </div>
       <div style={styles.row}>
         <span style={styles.label}>Android Fallback:</span>
-        <span style={styles.value}>{android.fallback}</span>
+        <a href={android.fallback} style={styles.link}>
+              {android.fallback}
+          </a>
       </div>
       <div style={styles.row}>
         <span style={styles.label}>iOS Primary:</span>
-        <span style={styles.value}>{ios.primary}</span>
+        <a href={ios.primary} style={styles.link}>
+              {ios.primary}
+          </a>
       </div>
       <div style={styles.row}>
         <span style={styles.label}>iOS Fallback:</span>
-        <span style={styles.value}>{ios.fallback}</span>
+          <a href={ios.fallback} style={styles.link}>
+              {ios.fallback}
+          </a>
       </div>
       <div style={styles.row}>
         <span style={styles.label}>Web:</span>
@@ -98,7 +104,7 @@ export const CardList = () => {
   //test
   const [shortenLink, setShortenLink] = useState<shortenLinkProps[]>([]);
   useEffect(() => {
-    fetch("https://shortlinker.onrender.com/shortlinks/", { method: "GET"})
+    fetch("http://127.0.0.1:5000/shortlinks/", { method: "GET"})
       .then((response) => {
         console.log(response);
         return response.json();
