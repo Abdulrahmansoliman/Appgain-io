@@ -55,7 +55,7 @@ export const CreateForm = () => {
 
   const onSubmit = (formdata: createFormValues) => {
     console.log(formdata);
-    fetch("http://127.0.0.1:5000/shortlinks/", {
+    fetch("https://shortlinker.onrender.com/shortlinks/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -227,7 +227,7 @@ export const PutForm = () => {
     } : undefined,
   };
 
-  fetch(`http://127.0.0.1:5000/shortlinks/${custom_slug}`, {
+  fetch(`https://shortlinker.onrender.com/shortlinks/${custom_slug}`, {
     method: "PUT",  
     mode: "cors",
     headers: {

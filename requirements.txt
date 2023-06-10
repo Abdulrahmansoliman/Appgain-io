@@ -1,4 +1,4 @@
-pymongo
+pymongo==3.13.0
 Flask-MongoEngine
 mongoengine==0.23.1
 alembic==1.5.1
