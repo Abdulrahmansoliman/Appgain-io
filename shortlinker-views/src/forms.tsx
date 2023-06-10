@@ -37,14 +37,14 @@ export const CreateForm = () => {
   const form = useForm<createFormValues>({
     defaultValues: {
       ios: {
-        primary: "",
-        fallback: "",
+        primary: undefined,
+        fallback: undefined,
       },
       android: {
-        primary: "",
-        fallback: "",
+        primary: undefined,
+        fallback: undefined,
       },
-      web: "",
+      web:undefined,
     },
   });
   const { register, handleSubmit, formState, reset } = form;
@@ -178,12 +178,12 @@ export const CreateForm = () => {
 type putFormValues = {
   slug: string;
   ios: {
-    primary: string;
-    fallback: string;
+    primary: string|undefined;
+    fallback: string|undefined;
   };
   android: {
-    primary: string;
-    fallback: string;
+    primary: string|undefined;
+    fallback: string|undefined;
   };
 };
 
@@ -191,14 +191,14 @@ export const PutForm = () => {
   
   const form = useForm<putFormValues>({
     defaultValues: {
-      slug: "",
+      slug: undefined,
       ios: {
-        primary: "_",
-        fallback: "_",
+        primary: undefined,
+        fallback: undefined,
       },
       android: {
-        primary: "_",
-        fallback: "_",
+        primary: undefined,
+        fallback: undefined,
       },
     },
   });
@@ -215,15 +215,16 @@ export const PutForm = () => {
 
   const onSubmit = (formdata: putFormValues) => {
   let custom_slug = formdata.slug;
+  console.log(formdata)
   const body = {
     slug: formdata.slug,
-    ios: formdata.ios.primary || formdata.ios.fallback ? {
-      primary: formdata.ios.primary,
-      fallback: formdata.ios.fallback
+    ios: formdata.ios ? {
+      primary: formdata.ios.primary?formdata.ios.primary:undefined,
+      fallback: formdata.ios.fallback?formdata.ios.fallback:undefined
     } : undefined, 
-    android: formdata.android.primary || formdata.android.fallback ? {
-      primary: formdata.android.primary,
-      fallback: formdata.android.fallback
+    android: formdata.android? {
+      primary: formdata.android.primary?formdata.android.primary:undefined,
+      fallback: formdata.android.fallback?formdata.android.fallback:undefined
     } : undefined,
   };
 
@@ -259,24 +260,24 @@ export const PutForm = () => {
   const handleAndroidPrimaryChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setValue("android.primary", e.target.checked ? "" : "_");
+    setValue("android.primary", undefined);
     setAndroidPrimaryVisible(e.target.checked);
   };
 
   const handleAndroidFallbackChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setValue("android.fallback", e.target.checked ? "" : "_");
+    setValue("android.fallback", undefined);
     setAndroidFallbackVisible(e.target.checked);
   };
 
   const handleIOSPrimaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue("ios.primary", e.target.checked ? "" : "_");
+    setValue("ios.primary", undefined);
     setIosPrimaryVisible(e.target.checked);
   };
 
   const handleIOSFallbackChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue("ios.fallback", e.target.checked ? "" : "_");
+    setValue("ios.fallback", undefined);
     setIosFallbackVisible(e.target.checked);
   };
 
@@ -302,7 +303,7 @@ export const PutForm = () => {
         <label htmlFor="android-primary">Primary</label>
         <input
           type="text"
-          placeholder="enter android primary, leave it empty to remove"
+          placeholder="write space to remove"
           id="android-primary"
           {...register("android.primary")}
           style={{ display: androidPrimaryVisible ? "block" : "none" }}
@@ -316,7 +317,7 @@ export const PutForm = () => {
         <label htmlFor="android-fallback">Fallback</label>
         <input
           type="text"
-          placeholder="enter android fallback, leave it empty to remove"
+          placeholder="write space to remove"
           id="android-fallback"
           {...register("android.fallback")}
           style={{ display: androidFallbackVisible ? "block" : "none" }}
@@ -331,7 +332,7 @@ export const PutForm = () => {
         <label htmlFor="ios-primary">Primary</label>
         <input
           type="text"
-          placeholder="enter ios primary, leave it empty to remove"
+          placeholder="write space to remove"
           id="ios-primary"
           {...register("ios.primary")}
           style={{ display: iosPrimaryVisible ? "block" : "none" }}
@@ -345,7 +346,7 @@ export const PutForm = () => {
         <label htmlFor="ios-fallback">Fallback</label>
         <input
           type="text"
-          placeholder="enter ios fallback, leave it empty to remove"
+          placeholder="write space to remove"
           id="ios-fallback"
           {...register("ios.fallback")}
           style={{ display: iosFallbackVisible ? "block" : "none" }}
@@ -388,4 +389,3 @@ export const PutForm = () => {
     </div>
   );
 };
-
