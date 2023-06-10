@@ -150,17 +150,15 @@ export const CreateForm = () => {
 
       {newLink && (
         <div>
-          <h2>Response:</h2>
-          <h3> Slug </h3>
-          <p>{newLink.slug}</p>
-          <h3> Android </h3>
-          <p>{newLink.android.fallback}</p>
-          <p>{newLink.android.primary}</p>
-          <h3> IOS </h3>
-          <p>{newLink.ios.fallback}</p>
-          <p>{newLink.ios.primary}</p>
-          <h3> Web </h3>
-          <p>{newLink.web}</p>
+            <h2>Response:</h2>
+            <h3>Slug</h3>
+            <p>{newLink.slug}</p> 
+            <h3>Android</h3>
+            <h4>Android Fallback:</h4> {newLink.android.fallback}   
+            <h4>Android Primary:</h4> {newLink.android.primary} 
+            <h3>IOS</h3>    
+            <h3>IOS Fallback:</h3>{newLink.ios.fallback}    
+            <h3>IOS Primary:</h3> {newLink.ios.primary}    
         </div>
       )}
 
