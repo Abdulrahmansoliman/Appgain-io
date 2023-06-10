@@ -3,6 +3,8 @@ import random
 from flask import Blueprint, jsonify, request, redirect
 from models.shortlinks.shortlinks import ShortLink
 import db_intialization_script
+from flask_cors import cross_origin
+
 
 shortlinks_bp = Blueprint('shortlinks', __name__)
 
@@ -12,7 +14,10 @@ shortlinks_bp = Blueprint('shortlinks', __name__)
 def list_shortlinks():
     shortlinks = ShortLink.objects()
     formatted_shortlinks = [shortlink.format() for shortlink in shortlinks]
-    return jsonify(formatted_shortlinks), 200
+    data = { "data":formatted_shortlinks
+    }
+    response = jsonify(data)
+    return response, 200
 
 
 @shortlinks_bp.route('/', methods=['POST'])
@@ -23,9 +28,13 @@ def create_shortlink():
     android = data.get('android')
     web = data.get('web')
 
+    # Validate required fields
+    if not ios or not android or not web:
+        return jsonify({'error': 'ios, android and web targets are required'}), 400
+
     # Generate a random slug if not provided
     if not slug:
-        slug = generate_random_slug()
+        slug = generate_unique_slug()
 
     # Create the ShortLink object
     shortlink = ShortLink(
@@ -43,10 +52,15 @@ def create_shortlink():
         return jsonify({'error': str(e)}), 500
 
 
-def generate_random_slug(length=6):
+def generate_unique_slug(length=6):
     chars = string.ascii_letters + string.digits
-    return ''.join(random.choice(chars) for _ in range(length))
+    slug = ''.join(random.choice(chars) for _ in range(length))
 
+    # Check if the slug is already in use
+    while ShortLink.objects(slug=slug).first():
+        slug = ''.join(random.choice(chars) for _ in range(length))
+
+    return slug
 
 @shortlinks_bp.route('/<slug>', methods=['PUT'])
 def update_shortlink(slug):
