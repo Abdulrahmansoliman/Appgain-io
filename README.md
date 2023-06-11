@@ -9,7 +9,7 @@ Make sure you have Python installed on your system.
 
 2. Open a terminal or command prompt and navigate to the project directory.
 
-3.nstall the required dependencies by running the following command:
+3. Install the required dependencies by running the following command:
 pip install -r requirements.txt
 
 Once the dependencies are installed, you can start the backend server by running the __init__.py file.
