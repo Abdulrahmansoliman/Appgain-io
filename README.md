@@ -28,8 +28,7 @@ GET /shortlinks
 This endpoint retrieves a list of all existing shortlinks. It returns a JSON response containing an array of shortlink objects with their respective details.
 
 Example Response:
-'''
-json
+```json
 
 {
   "data": [
@@ -59,11 +58,11 @@ json
     }
   ]
 }
-'''
-Create Shortlink
-bash
-Copy code
+```
+### Create Shortlink
+
 POST /shortlinks
+
 This endpoint creates a new shortlink. It requires the following parameters in the request body:
 
 slug (optional): The custom slug for the shortlink.
@@ -72,8 +71,8 @@ android (object): The primary and fallback URLs for the Android platform.
 web (string): The URL for the web platform.
 Example Request Body:
 
-json
-Copy code
+```json
+
 {
   "slug": "custom-slug",
   "ios": {
@@ -86,10 +85,12 @@ Copy code
   },
   "web": "http://web-url"
 }
+```
+
 Example Response:
 
-json
-Copy code
+```json
+
 {
   "slug": "custom-slug",
   "ios": {
@@ -102,30 +103,32 @@ Copy code
   },
   "web": "http://web-url"
 }
-Update Shortlink
-bash
-Copy code
+```
+
+### Update Shortlink
+
 PUT /shortlinks/{slug}
+
 This endpoint updates an existing shortlink with the specified slug. It allows you to modify specific attributes of the shortlink while leaving others unchanged. The request body should contain the updated attributes.
 
 Example Request:
 
-bash
-Copy code
 PUT /shortlinks/custom-slug
+
 Example Request Body:
 
-json
-Copy code
+```json
+
 {
   "ios": {
     "fallback": "http://updated-ios-fallback-url"
   }
 }
+```
+
 Example Response:
 
-json
-Copy code
+```json
 {
   "slug": "custom-slug",
   "ios": {
@@ -138,6 +141,7 @@ Copy code
   },
   "web": "http://web-url"
 }
+```
 Error Responses
 400 Bad Request: Returned when the request is missing required parameters or has an invalid format.
 404 Not Found: Returned when the requested
